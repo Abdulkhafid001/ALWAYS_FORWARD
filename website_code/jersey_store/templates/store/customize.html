@@ -1,0 +1,106 @@
+{% extends 'store/main.html'%}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Always Forward Jersey Store{% endblock %}</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    {% block content %}
+    <section id="happyCustomers">
+        <div class="container-fluid my-5 fs-anton ">
+            <div class="card border border-0">
+                <img class="card-img-top" src="{% static 'images/customize-banner.webp'%}" alt="Card image">
+                <div class="card-img-overlay">
+                    <h1 class="d-none display-1 d-sm-block text-white card-title">Customize Your Jersey</h1>
+                    <h1 class="d-none d-sm-block d-md-none text-white card-title">Customize Your Jersey</h1>
+                    <p class="card-text text-white">Your Name And Number</p>
+                    <a href="{% url 'customize' %}"
+                        class="bg-site-green text-white td-none px-5 py-3 fw-bold">Customize</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <h3 class="text-center fs-anton">Some Of Our Work</h3>
+        <div class="row">
+            <div class="col-sm-3">
+                <img class="img-fluid" src="{% static 'images/liverpool-jersey1.jpg' %}" alt="" id="jerseyImage">
+            </div>
+            <div class="col-sm-3">
+                <img class="img-fluid" src="{% static 'images/chelsea-blue-jersey2.jpg' %}" alt="" id="jerseyImage">
+            </div>
+            <div class="col-sm-3">
+                <img class="img-fluid" src="{% static 'images/chelsea-home-jersey2.jpg' %}" alt="" id="jerseyImage">
+            </div>
+            <div class="col-sm-3">
+                <img class="img-fluid" src="{% static 'images/liverpool-jersey1.jpg' %}" alt="" id="jerseyImage">
+            </div>
+        </div>
+    </div>
+    <!--section for categories starts
+    <section id="category">
+        <div class="container-fluid my-4">
+            <h4>Check Out Our Other categories</h4>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="card text-bg-dark">
+                        <img src="{% static 'images/mens-black-jordan.jpg'%}" class="card-img" alt="...">
+                        <div class="card-img-overlay">
+                            <div class="my-5">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural
+                                    lead-in to
+                                    additional content. This content is a little bit longer.</p>
+                                <a href="" class="btn btn-secondary">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card text-bg-dark">
+                        <img src="{% static 'images/football-boots.jpg'%}" class="card-img" alt="...">
+                        <div class="card-img-overlay">
+                            <div class="my-5">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural
+                                    lead-in to
+                                    additional content. This content is a little bit longer.</p>
+                                <a href="" class="btn btn-secondary">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card text-bg-dark">
+                        <img src="{% static 'images/mens-white-jordan.jpg'%}" class="card-img" alt="...">
+                        <div class="card-img-overlay">
+                            <div class="my-5">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural
+                                    lead-in to
+                                    additional content. This content is a little bit longer.</p>
+                                <a href="" class="btn btn-secondary">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    section for categories ends -->
+    {% endblock %}
+    <script>
+
+    </script>
+
+</body>
+
+</html>

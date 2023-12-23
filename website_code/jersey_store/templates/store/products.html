@@ -1,0 +1,37 @@
+{% extends 'store/main.html' %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Our Products{% endblock %}</title>
+</head>
+
+<body>
+    {% block content %}
+    <div class="container mb-5">
+        <div class="row">
+            {% for product in products %}
+            <div class="col-sm-4 mb-3">
+                <div class="card">
+                    <img class="card-img-top img-fluid" src="{{product.imageURL}}" alt="{{product.imageURL}}">
+                    <div class="card-body text-start">
+                        <h6><strong>{{product.name}}</strong></h6>
+                        <button data-product="{{product.id}}" data-action="add"
+                            class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+                        <a class="btn btn-outline-success" href="#">View</a>
+                        <h4 style="float: right">
+                            <strong>&#8358;{{product.price|floatformat:2}}</strong>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,132 @@
+{% extends 'store/main.html' %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Always Forward Jersey Store{% endblock %}</title>
+</head>
+
+<body>
+    {% block content %}
+    <!-- homepage banner section starts -->
+    <section id="home">
+        <div class="container-fluid bg-black-stylish text-center text-white p-5">
+            <h1 class="fs-deco my-md-5 display-1">END OF YEAR '23 SALES!</h1>
+            <p class="fs-anton mb-md-5">UP TO 70% OF SELECT ITEMS !!! FREE SHIPPING ON ORDERS OVER N100K US/UK FOOTWEARS
+                100%</p>
+            <a href="{% url 'products' %}" class="mt-md-5 bg-site-green text-white td-none px-5 py-3 fw-bold">Shop
+                Now!</a>
+        </div>
+    </section>
+    <!-- homepage banner section ends -->
+
+
+    <div class="container fs-anton mt-5 mb-5">
+        <h3 class="text-center display-6">New Arrivals</h3>
+        <div class="row">
+            {% for product in products %}
+            <div class="col-sm-4 mb-3">
+                <div class="card">
+                    <img class="card-img-top img-fluid" src="{{product.imageURL}}" alt="{{product.imageURL}}">
+                    <div class="card-body text-start">
+                        <h5>{{product.name}}</h5>
+                        <h6 class="">&#8358;{{product.price|floatformat:2}}</h6>
+                        <div class="d-flex justify-content-around align-items-baseline">
+                            <button data-product="{{product.id}}" data-action="add"
+                                class="bg-site-green br-curve border border-success text-white px-sm-5 py-sm-2 add-btn update-cart">Add
+                                to Cart</button>
+                            <a class="btn btn-outline-success br-curve" href="#">View</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- categories section starts -->
+    <div class="container-fluid fs-anton">
+        <h3 class="text-center fs-anton display-6">Shop Our Category</h3>
+        <div class="card-group">
+            <div class="card text-bg-dark border border-0 m-2">
+                <img src="{% static 'images/white-football-boots-image.jpg'%}" class="card-img img-fluid" alt="...">
+                <div class="card-img-overlay">
+                    <h5 class="card-title">All Jerseys</h5>
+                    <p class="card-text">Clubs Kits, Track</p>
+                    <a href="{% url 'customize' %}" class="bg-site-green text-white td-none px-5 p-3 fw-bold">Shop
+                        Now</a>
+                </div>
+            </div>
+            <div class="card text-bg-dark border border-0 m-2">
+                <img src="{% static 'images/white-football-boots-image.jpg'%}" class="card-img img-fluid" alt="...">
+                <div class="card-img-overlay">
+                    <h5 class="card-title">All Footwears</h5>
+                    <p class="card-text">sports, casual</p>
+                    <a href="{% url 'customize' %}" class="bg-site-green text-white td-none px-5 p-3 fw-bold">Shop
+                        Now</a>
+                </div>
+            </div>
+            <div class="card text-bg-dark border border-0 m-2">
+                <img src="{% static 'images/white-football-boots-image.jpg'%}" class="card-img img-fluid" alt="...">
+                <div class="card-img-overlay">
+                    <h5 class="card-title">All Clothings</h5>
+                    <p class="card-text">Tracks, Suits</p>
+                    <p class="card-text"><small>Last updated 3 mins ago</small></p> <a href="{% url 'customize' %}"
+                        class="bg-site-green text-white td-none px-5 p-3 fw-bold">Shop Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- categories section ends -->
+    <!-- brands we stock section starts -->
+    <section id="branches">
+        <div class="container-fluid bg-light p-5 text-center fs-anton">
+            <h3 class="m-4">Brands We Stock</h3>
+            <p class="my-4">We pick the very best so you can be assured of the quality. There can be no compromises when
+                it comes to
+                materials, ease of wear, and durability.</p>
+        </div>
+        <div class="container my-3 w-75 m-auto">
+            <div class="row">
+                <div class="col-sm-3" style="max-width:140px">
+                    <div>
+                        <img src="{% static 'images/PUMA-Logo.png' %}" class="img-fluid" alt="puma-logo">
+                    </div>
+                </div>
+                <div class="col-sm-3" style="max-width:140px">
+                    <div class="d-inline-">
+                        <img src="{% static 'images/Under-Armour-logo.png' %}" class="img-fluid" alt="under-amour-logo">
+                    </div>
+                </div>
+                <div class="col-sm-3" style="max-width:140px">
+                    <div>
+                        <img src="{% static 'images/New_Balance Logo.png' %}" class="img-fluid" alt="new-balance-logo">
+                    </div>
+                </div>
+                <div class="col-sm-3" style="max-width:140px">
+                    <div class="">
+                        <img src="{% static 'images/nike-logo-image.png' %}" class="img-fluid" alt="skechers-logo">
+                    </div>
+                </div>
+                <div class="col-sm-3" style="max-width:140px">
+                    <div class="">
+                        <img src="{% static 'images/nike-logo-image.png' %}" class="img-fluid" alt="skechers-logo">
+                    </div>
+                </div>
+                <div class="col-sm-3" style="max-width:140px">
+                    <div class="">
+                        <img src="{% static 'images/nike-logo-image.png' %}" class="img-fluid" alt="skechers-logo">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- brands we stock section ends -->
+    {% endblock content %}
+
+</body>
+
+</html>

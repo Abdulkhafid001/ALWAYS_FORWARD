@@ -1,0 +1,74 @@
+{% extends 'store/main.html' %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Cart{% endblock %}</title>
+</head>
+
+<body>
+    {% block content %}
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-baseline my-2">
+            <h3 class="text-uppercase fs-anton">your cart</h3>
+            <a href="{% url 'products' %}" class="bg-site-green text-white fs-anton td-none px-5 py-2 fw-bold">Shop more
+                products</a>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+                {% for item in items %}
+                <div class="border border-bottom-light mb-2">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-around align-items-center">
+                            <img class="row-image" src="{{item.product.imageURL}}">
+                            <div class="mx-2 text-start">
+                                <p class="fs-anton fw-bold">{{item.product.name}}</p>
+                                <p class="fs-anton">&#8358;{{item.product.price|floatformat:2}}</p>
+                                <p class="quantity fs-roboto ">x{{item.quantity}}</p>
+                                <p class="fs-roboto fw-bold">&#8358;{{item.get_total|floatformat:2}}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="quantity me-2">
+                                <i data-product="{{item.product.id}}" data-action="add"
+                                    class="chg-quantity update-cart bi bi-caret-up-fill"></i>
+                                <i data-product="{{item.product.id}}" data-action="remove"
+                                    class="chg-quantity update-cart bi bi-caret-down-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col-sm-4 fs-anton">
+                <div class="card border border-light rounded-0">
+                    <h4 class="py-3">Order Summary</h4>
+                    <div class="table-responsive px-3 ">
+                        <table class="table table-borderless  mb-5">
+                            <tbody>
+                                <tr>
+                                    <td class="text-start">Sub Total :</td>
+                                    <td class="text-end" id="">&#8358; {{order.get_cart_total|floatformat:2}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-start">Discount</td>
+                                    <td class="text-end" id="">&#8358; {{order.get_cart_total|floatformat:2}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-start">Delivery Fee</td>
+                                    <td class="text-end" id="">&#8358; {{order.get_cart_total|floatformat:2}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <a style="float:right; margin:5px;" class="bg-site-green text-white td-none px-5 py-3 fw-bold "
+                        href="{% url 'checkout' %}">Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock content %}
+</body>

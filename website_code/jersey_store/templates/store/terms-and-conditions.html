@@ -1,0 +1,282 @@
+{% extends 'store/main.html'%}
+<!DOCTYPE html>
+{%load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Our Terms And Conditions{% endblock %}</title>
+    <!-- link to custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- link to custom JS -->
+    <script src="script.js"></script>
+    <!-- link to bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <!-- link to bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- link to angular CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <!-- link to fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Rubik:wght@500;600&family=Saira+Extra+Condensed:wght@400;600&display=swap"
+        rel="stylesheet">
+    <!-- link to bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+
+<body>
+    {% block content %}
+    <!-- advert section end -->
+    <marquee behavior="" direction="ltr" class="bg-black text-white fs-saira display-1">🎁🎀🎉🎈🎄christmas offer: upto
+        50% off! 🎉🎀🎁💥❤🎄</marquee>
+    <!-- advert section end -->
+    <!-- page content section start -->
+    <section id="pageContent">
+        <div class="container">
+            <h5 class="fs-saira fw-monospace">to protect us both</h5>
+            <h1 class="fs-saira display-3 text-uppercase">our terms and conditions</h1>
+            <h5 class="fs-saira fw-bold text-uppercase">table of contents</h5>
+            <ul class="lst-numbered text-capitalize fs-saira fs-4">
+                <li><a href="#overview" class="text-black">overview</a></li>
+                <li><a href="#payment" class="text-black">payment</a></li>
+                <li><a href="#goods" class="text-black">goods </a></li>
+                <li><a href="#refund" class="text-black">refund & return</a></li>
+                <li><a href="#delivery" class="text-black">delivery & inspection</a></li>
+                <li><a href="#prices" class="text-black">prices</a></li>
+                <li><a href="#warranty" class="text-black">disclaimer of warranties & limitation of liabiltiy</a></li>
+                <li><a href="#changes" class="text-black">changes to terms of services</a></li>
+                <li><a href="#agreement" class="text-black">entire agreement</a></li>
+                <li><a href="#contact" class="text-black">contact salesperson</a></li>
+            </ul>
+            <div>
+                <h5 id="overview" class="fs-saira fs-1">overview.</h5>
+                <div class="fs-roboto">
+                    <p>
+                        This website is operated by illiminate. Throughout the site, the terms “we”, “us” and “our”
+                        refer to
+                        illiminate. illiminate offers this website, including all information, tools and Services
+                        available
+                        from this site to you, the user, conditioned upon your acceptance of all terms, conditions,
+                        policies
+                        and notices stated here.
+                    </p>
+                    <p>By visiting our site and/ or purchasing something from us, you engage in our “Service” and agree
+                        to
+                        be bound by the following terms and conditions (“Terms of Service”, “Terms”), including those
+                        additional terms and conditions and policies referenced herein and/or available by hyperlink.
+                        These
+                        Terms of Service apply to all users of the site, including without limitation users who are
+                        browsers, vendors, customers, merchants, and/ or contributors of content.</p>
+                    <p>Please read these Terms of Service carefully before accessing or using our website. By accessing
+                        or
+                        using any part of the site, you agree to be bound by these Terms of Service. If you do not agree
+                        to
+                        all the terms and conditions of this agreement, then you may not access the website or use any
+                        Services. If these Terms of Service are considered an offer, acceptance is expressly limited to
+                        these Terms of Service.</p>
+                    <p>Any new features or tools which are added to the current store shall also be subject to the Terms
+                        of
+                        Service. You can review the most current version of the Terms of Service at any time on this
+                        page.
+                        We reserve the right to update, change or replace any part of these Terms of Service by posting
+                        updates and/or changes to our website. It is your responsibility to check this page periodically
+                        for
+                        changes. Your continued use of or access to the website following the posting of any changes
+                        constitutes acceptance of those changes.</p>
+                    <p>Our store is hosted on Shopify Inc. They provide us with the online e-commerce platform that
+                        allows
+                        us to sell our products and Services to you.</p>
+                </div>
+            </div>
+
+            <div>
+                <h5 id="payment" class="fs-saira fs-1">Payment.</h5>
+                <p class="fs-roboto">This Payment Agreement ("Agreement") is entered into on [Date], by and between
+                    [Your Company Name],
+                    hereinafter referred to as the "Seller," and [Customer Name], hereinafter referred to as the
+                    "Buyer."</p>
+                <p class="fs-roboto">Once goods are received in good condition we expect you to pay the appropriate
+                    goods fee and delivery
+                    charges </p>
+                <ul class="lst-numbered fs-roboto">
+                    <li>The total amount due for the Goods is [Amount] payable by the Buyer to the Seller.</li>
+                    <li>Payment shall be made within [number of days] days from the date of delivery of the Goods.</li>
+                    <li>Payment method: [Specify accepted payment methods, e.g., bank transfer, check, etc.].</li>
+                </ul>
+                <h6 class="fs-saira fs-1">Late Payments.</h6>
+                <p class="fs-roboto">Late payments may be subject to [late fee percentage] interest per month on the
+                    outstanding balance.
+                </p>
+                <h6 class="fs-saira fs-1">Payment Confirmation.</h6>
+                <ul class="lst-numbered fs-roboto">
+                    <li>The Seller will issue an invoice to the Buyer upon delivery of the Goods.</li>
+                    <li>The Buyer shall confirm receipt of the Goods and the satisfactory condition within [number of
+                        days] days from the date of delivery.</li>
+                </ul>
+            </div>
+            <div>
+                <h5 id="goods" class="fs-saira fs-1">Goods.</h5>
+                <p class="fs-roboto">
+                    The Seller agrees to provide the Buyer with [description of goods or services] (the "Goods") in
+                    accordance with the terms outlined in this Agreement.
+                </p>
+            </div>
+            <div>
+                <h5 id="refund" class="fs-saira fs-1">Refund and Return Discrepancies and Disputes.</h5>
+                <ul class="lst-numbered fs-roboto">
+                    <li>If the Buyer identifies any discrepancies or defects in the Goods, they shall promptly notify
+                        the Seller in writing within [number of days] days of delivery.</li>
+                    <li>In the event of a dispute, both parties agree to negotiate in good faith to resolve the issue
+                        amicably.</li>
+                </ul>
+            </div>
+            <div>
+                <h5 id="delivery" class="fs-saira fs-1">Delivery And Inspection.</h5>
+                <ul class="lst-numbered fs-roboto">
+                    <li>The Seller will deliver the Goods to the Buyer by [delivery method] on or before [delivery
+                        date].</li>
+                    <li>Upon receipt of the Goods, the Buyer agrees to inspect the delivered items promptly.</li>
+                    <li>If the Goods are received in good condition and meet the specifications agreed upon, the Buyer
+                        agrees to make the payment in accordance with the Payment Terms.</li>
+                </ul>
+            </div>
+            <div>
+                <h5 id="prices" class="fs-saira fs-1">Prices And Influecing Factors.</h5>
+                <p class="fs-roboto">This Price Agreement ("Agreement") is made and entered into on [Date], between
+                    [Your Company Name],
+                    hereinafter referred to as the "Seller," and [Customer Name], hereinafter referred to as the
+                    "Buyer."</p>
+                <p class="fs-roboto">The prices for the goods or services provided by the Seller are subject to change
+                    based on the
+                    following factors:</p>
+                <ul class="lst-numbered fs-roboto">
+                    <li>Currency Fluctuations:Prices are quoted in [Currency]. In the event of significant fluctuations
+                        in the exchange rate, the Seller reserves the right to adjust prices accordingly</li>
+                    <li>The exchange rate used for currency conversion will be based on [exchange rate source, e.g.,
+                        official bank rates] as of the date of invoicing.</li>
+                    <li> Shipping Costs:
+                        3.1 Shipping costs are not included in the initial price quote and will be calculated and
+                        communicated separately based on the shipping method, destination, and any additional shipping
+                        services required.</li>
+                    <li>others: The Buyer acknowledges that shipping costs are subject to change due to factors such as
+                        fuel prices, carrier fees, and international regulations.</li>
+                </ul>
+            </div>
+            <div>
+                <h5 id="warranty" class="fs-saira fs-1">Warranty.</h5>
+                <p class="fs-roboto">This One-Year Warranty Agreement ("Agreement") is entered into on [Date], by and
+                    between [Your
+                    Company Name], hereinafter referred to as the "Seller," and [Customer Name], hereinafter referred to
+                    as the "Buyer.</p>
+                <ol class="fs-roboto">
+                    <li>
+                        <h3>Warranty Coverage:</h3>
+                        <ol type="a">
+                            <li>The Seller warrants that the jerseys purchased by the Buyer are free from defects in
+                                material and
+                                workmanship for a period of one (1) year from the date of purchase.</li>
+                            <li>This warranty covers manufacturing defects, including but not limited to stitching,
+                                printing, and
+                                fabric flaws.</li>
+                        </ol>
+                    </li>
+
+                    <li>
+                        <h3>Exclusions:</h3>
+                        <ol type="a">
+                            <li>This warranty does not cover damage caused by normal wear and tear, misuse, neglect,
+                                accidents, or
+                                any alterations or modifications made to the jerseys after purchase.</li>
+                        </ol>
+                    </li>
+
+                    <li>
+                        <h3>Warranty Claim Procedure:</h3>
+                        <ol type="a">
+                            <li>In the event that the Buyer discovers a defect covered by this warranty, the Buyer must
+                                notify the
+                                Seller within the warranty period.</li>
+                            <li>The Buyer shall provide proof of purchase and details of the defect to initiate the
+                                warranty
+                                claim.</li>
+                            <li>The Seller may request the defective jersey to be returned for inspection. The cost of
+                                shipping for
+                                the return shall be borne by the Buyer.</li>
+                        </ol>
+                    </li>
+
+                    <li>
+                        <h3>Remedies:</h3>
+                        <ol type="a">
+                            <li>If, upon inspection, the Seller determines that the defect is covered by this warranty,
+                                the Seller
+                                will, at its discretion, repair or replace the defective jersey.</li>
+                            <li>If the jersey is no longer available or has been discontinued, the Seller may provide a
+                                comparable
+                                replacement or offer a refund.</li>
+                        </ol>
+                    </li>
+
+                    <li>
+                        <h3>Limitation of Liability:</h3>
+                        <ol type="a">
+                            <li>The liability of the Seller under this warranty is limited to the repair, replacement,
+                                or refund of
+                                the defective jersey in accordance with the terms of this Agreement.</li>
+                        </ol>
+                    </li>
+
+                    <li>
+                        <h3>Governing Law:</h3>
+                        <p>This Agreement shall be governed by and construed in accordance with the laws of [your
+                            jurisdiction].</p>
+                    </li>
+
+                    <li>
+                        <h3>Entire Agreement:</h3>
+                        <p>This Agreement constitutes the entire understanding between the parties and supersedes all
+                            prior
+                            agreements, whether oral or written, relating to the subject matter herein.</p>
+                    </li>
+                </ol>
+            </div>
+            <div>
+                <h5 id="changes" class="fs-saira fs-1">Changes To Policies.</h5>
+                <p class="fs-roboto">You can review the most current version of the Terms of Service at any time at this
+                    page.
+                    We reserve the right, at our sole discretion, to update, change or replace any part of these Terms
+                    of Service by posting updates and changes to our website. It is your responsibility to check our
+                    website periodically for changes. Your continued use of or access to our website or the Service
+                    following the posting of any changes to these Terms of Service constitutes acceptance of those
+                    changes.</p>
+            </div>
+            <div>
+                <h5 id="agreement" class="fs-saira fs-1">Agreement.</h5>
+                <p class="fs-roboto">This Agreement constitutes the entire understanding between the parties and
+                    supersedes all prior
+                    agreements, whether oral or written, relating to the subject matter herein.
+                    IN WITNESS WHEREOF, the parties hereto have executed this Price Agreement as of the date first above
+                    written.
+                </p>
+                <div class="fs-roboto text-center">
+                    <h3 class="bg-black py-3"><span class="text-white">Always</span> <span
+                            class="text-danger">Forward</span></h3>
+                    <h4 class="fst-italic">Breakthrough Ehihi</h4>
+                    <h5>Designer and Contractor.</h5>
+                </div>
+            </div>
+            <div>
+                <h5 id="contact" class="fs-saira fs-1">Contact Our Salesperson.</h5>
+
+
+            </div>
+        </div>
+    </section>
+    <!-- page content section end -->
+    {%endblock%}
+</body>
+
+</html>
