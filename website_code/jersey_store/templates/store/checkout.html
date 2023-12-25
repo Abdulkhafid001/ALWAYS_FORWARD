@@ -66,6 +66,7 @@
                 </form>
                 <div class="box-element m-2 p-3" id="payment-info">
                     <p class="fs-anton text-center">We Accept Paystack Options</p>
+                    <button type="submit" onclick="payWithPaystack()"> Pay </button>
                 </div>
             </div>
             <div class="col-sm-4">
@@ -88,7 +89,8 @@
             </div>
         </div>
     </div>
-
+    <!-- cdn paystack popup Js library -->
+    <script src="https://js.paystack.co/v1/inline.js"></script>
     <script type="text/javascript">
         // get cart total from backend
         var total = "{{order.get_cart_total|floatformat:2}}"

@@ -15,6 +15,7 @@ for (i = 0; i < updateBtns.length; i++) {
     })
 }
 
+// for logged in users
 function updateUserOrder(productId, action) {
     console.log('User is authenticated, sending data...')
 
@@ -36,6 +37,7 @@ function updateUserOrder(productId, action) {
         });
 }
 
+// for non-logged in users
 function addCookieItem(productId, action) {
     console.log('User is not authenticated')
 
