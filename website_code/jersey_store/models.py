@@ -9,7 +9,27 @@ class Customer(models.Model):
     user = models.OneToOneField(
         User, null=True, blank=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=200, null=True)
-    email = models.CharField(max_length=200)
+    email = models.CharField(max_length=200, null=True, blank=True)
+    description = models.CharField(max_length=200, null=True,blank=True)
+    CATEGORY_CHOICES = [
+        ('M', 'Mens'),
+        ('W', 'Womens'),
+        ('K', 'Kids'),
+    ]
+    SIZE_CHOICES = [
+        ('S', 'Small'),
+        ('Xl', 'Xtra Large'),
+        ('M', 'Medium'),
+        ('XXL', 'Xtra Xtra Large'),
+    ]
+    TYPE_CHOICES = [
+        ('J', 'Jersey'),
+        ('B', 'Boots'),
+        ('A', 'Accessories'),
+    ]
+    category = models.CharField(max_length=10, null=True, blank=True, choices=CATEGORY_CHOICES)
+    size = models.CharField(max_length=10, null=True, blank=True, choices=SIZE_CHOICES)
+    type = models.CharField(max_length=10, null=True, blank=True, choices=TYPE_CHOICES)
 
     def __str__(self):
         return self.name
