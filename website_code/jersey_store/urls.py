@@ -15,6 +15,6 @@ urlpatterns = [
     path('terms-and-conditions/', views.terms_and_conditions,
          name="termsandconditions"),
     path('policy/', views.policy, name="policy"),
-    path('update_item/', views.updateItem, name="update_item"),
-    path('process_order/', views.processOrder, name="process_order"),
+    path('update_item/', views.update_item, name="update_item"),
+    path('process_order/', views.process_order, name="process_order"),
 ]

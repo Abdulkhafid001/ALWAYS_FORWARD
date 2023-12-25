@@ -14,12 +14,12 @@
     <div class="container-fluid mt-4 fs-anton">
         <div class="row">
             <div class="col-sm-6">
-                <form id="form" action="">
+                <form id="form">
                     <div class="user-info">
                         <p>Enter User Info:</p>
                         <div class="row mb-3">
                             <div class="col-sm-12">
-                                <input type="text" class="form-control rounded-0" name="user name" id=""
+                                <input type="text" class="form-control rounded-0" name="username" id=""
                                     placeholder="name" required>
                             </div>
                         </div>
@@ -31,7 +31,7 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-sm-12">
-                                <input type="text" class="form-control rounded-0" name="phone no" id=""
+                                <input type="text" class="form-control rounded-0" name="phone" id=""
                                     placeholder="phone no" required>
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-sm-12">
-                                <input type="text" class="form-control rounded-0" name="zip code" id=""
+                                <input type="text" class="form-control rounded-0" name="zipcode" id=""
                                     placeholder="zip code" required>
                             </div>
                         </div>
@@ -104,8 +104,8 @@
     <script src="https://js.paystack.co/v1/inline.js"></script>
     <script type="text/javascript">
         // get cart total from backend
-        var total = "{{order.get_cart_total|floatformat:2}}"
-        console.log("user " + total);
+        var total = Number("{{order.get_cart_total|floatformat:2}}")
+        console.log("total = " + total);
         // get the user info form element
         var form = document.getElementById('form');
         form.addEventListener('submit', function (e) {
@@ -140,7 +140,7 @@
             }
 
             // user name and contact details
-            userFormData.name = form.name.value
+            userFormData.name = form.username.value
             userFormData.email = form.email.value
             userFormData.phone = form.phone.value
 
@@ -160,7 +160,7 @@
                     'X-CSRFToken': csrftoken,
                 },
                 // convert user info and shipping info to json to send to backend
-                body: JSON.stringify({ 'form': userFormData, 'shipping': shippingInfo }),
+                body: JSON.stringify({ 'userInfo': userFormData, 'shippingInfo': shippingInfo }),
 
             })
                 .then((response) => response.json())

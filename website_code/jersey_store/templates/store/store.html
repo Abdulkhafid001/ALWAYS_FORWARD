@@ -30,7 +30,7 @@
             {% for product in products %}
             <div class="col-sm-4 mb-3">
                 <div class="card">
-                    <img class="card-img-top img-fluid" src="{{product.imageURL}}" alt="{{product.imageURL}}">
+                    <img class="card-img-top img-fluid flip-image" src="{{product.imageURL}}" alt="{{product.imageURL}}">
                     <div class="card-body text-start">
                         <h5>{{product.name}}</h5>
                         <h6 class="">&#8358;{{product.price|floatformat:2}}</h6>
@@ -51,7 +51,7 @@
         <h3 class="text-center fs-anton display-6">Shop Our Category</h3>
         <div class="card-group">
             <div class="card text-bg-dark border border-0 m-2">
-                <img src="{% static 'images/jersey-banner.avif'%}" class="card-img img-fluid" alt="...">
+                <img src="{% static 'images/jersey-banner.avif'%}" class="card-img img-fluid" alt="jersey-banner">
                 <div class="card-img-overlay">
                     <h5 class="card-title">All Jerseys</h5>
                     <p class="card-text">Clubs Kits, Track</p>
@@ -59,8 +59,8 @@
                         Now</a>
                 </div>
             </div>
-            <div class="card text-bg-dark border border-0 m-2" >
-                <img src="{% static 'images/boot-image.avif'%}" class="card-img img-fluid" alt="...">
+            <div class="card text-bg-dark border border-0 m-2">
+                <img src="{% static 'images/boot-image.avif'%}" class="card-img img-fluid" alt="jersey-banner">
                 <div class="card-img-overlay">
                     <h5 class="card-title">All Footwears</h5>
                     <p class="card-text">sports, casual</p>
@@ -69,7 +69,7 @@
                 </div>
             </div>
             <div class="card text-bg-dark border border-0 m-2">
-                <img src="{% static 'images/boots-banner-2.avif'%}" class="card-img img-fluid" alt="...">
+                <img src="{% static 'images/boots-banner-2.avif'%}" class="card-img img-fluid" alt="jersey-banner">
                 <div class="card-img-overlay">
                     <h5 class="card-title">All Clothings</h5>
                     <p class="card-text">Tracks, Suits</p>

@@ -115,7 +115,7 @@ def about(request):
     return render(request, 'store/about.html', context)
 
 
-def updateItem(request):
+def update_item(request):
     data = json.loads(request.body.decode('utf-8'))
     productId = data.get('productId')
     action = data.get('action')
@@ -143,17 +143,19 @@ def updateItem(request):
     return JsonResponse('Item was added', safe=False)
 
 
-def processOrder(request):
+def process_order(request):
     transaction_id = datetime.datetime.now().timestamp()
     data = json.loads(request.body.decode('utf-8'))
-    name = data['form']['name']
-    email = data['form']['email']
+    name = data['userInfo']['name']
+    email = data['userInfo']['email']
+    phone = data['userInfo']['phone']
+
     print('name: ', name)
     print('email: ', email)
-    print(data['shipping']['address'])
-    print(data['shipping']['zipcode'])
-    print(data['shipping']['city'])
-    print(data['shipping']['state'])
+    print(data['shippingInfo']['address'])
+    print(data['shippingInfo']['zipcode'])
+    print(data['shippingInfo']['city'])
+    print(data['shippingInfo']['state'])
 
     if request.user.is_authenticated:
         customer = request.user.customer
@@ -163,7 +165,7 @@ def processOrder(request):
         customer, order = guestOrder(request, data)
 
     # get total
-    total = float(data['form']['total'])
+    total = float(data['userInfo']['total'])
     # set transaction_id to order model
     order.transaction_id = transaction_id
 
@@ -175,15 +177,15 @@ def processOrder(request):
     shipping = ShippingAddress.objects.create(
         customer=customer,
         order=order,
-        address=data['shipping']['address'],
-        city=data['shipping']['city'],
-        state=data['shipping']['state'],
-        zipcode=data['shipping']['zipcode']
+        address=data['shippingInfo']['address'],
+        city=data['shippingInfo']['city'],
+        state=data['shippingInfo']['state'],
+        zipcode=data['shippingInfo']['zipcode']
     )
     shipping.save()
     # Send email to the user
-    send_order_confirmation_email(customer, order, shipping)
-    return JsonResponse('Payment submitted..', safe=False)
+    # send_order_confirmation_email(customer, order, shipping)
+    return JsonResponse({'message':'Payment submitted..'}, safe=False)
 
 # function to send email after an order an order is completed
 
