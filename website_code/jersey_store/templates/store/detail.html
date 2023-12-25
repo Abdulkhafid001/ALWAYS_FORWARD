@@ -1,0 +1,41 @@
+{% extends 'store/main.html' %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{product.name}} details{% endblock %}</title>
+</head>
+
+<body>
+    {% block content %}
+    <div class="container-fluid mt-3 fs-anton">
+        <div class="row">
+            <div class="col-sm-8">
+                <div>
+                    <img src="{{product.imageURL}}" class="img-fluid" alt="{{product.name}}" id="detailImg">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <h3>{{product.name}}</h3>
+                <p>&#8358;{{product.price|floatformat:2}}</p>
+                <p>{{product.description}}</p>
+                <p>Size: {{product.size}}</p>
+                <p>Category: {{product.category}}</p>
+                <p>Type: {{product.type}}</p>
+                <div class="box-element p-2">
+                    <p class="fw-bold">Free shipping nationwide on all clothing & footwear orders over N50,000!</p>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-check2-circle text-success"></i> Quality assured & Secured Card Payment</li>
+                        <li><i class="bi bi-check2-circle text-success"></i> Order yours before 9 am for same-day dispatch</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+
+</html>

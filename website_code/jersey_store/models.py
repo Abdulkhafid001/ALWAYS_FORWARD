@@ -10,26 +10,7 @@ class Customer(models.Model):
         User, null=True, blank=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=200, null=True)
     email = models.CharField(max_length=200, null=True, blank=True)
-    description = models.CharField(max_length=200, null=True,blank=True)
-    CATEGORY_CHOICES = [
-        ('M', 'Mens'),
-        ('W', 'Womens'),
-        ('K', 'Kids'),
-    ]
-    SIZE_CHOICES = [
-        ('S', 'Small'),
-        ('Xl', 'Xtra Large'),
-        ('M', 'Medium'),
-        ('XXL', 'Xtra Xtra Large'),
-    ]
-    TYPE_CHOICES = [
-        ('J', 'Jersey'),
-        ('B', 'Boots'),
-        ('A', 'Accessories'),
-    ]
-    category = models.CharField(max_length=10, null=True, blank=True, choices=CATEGORY_CHOICES)
-    size = models.CharField(max_length=10, null=True, blank=True, choices=SIZE_CHOICES)
-    type = models.CharField(max_length=10, null=True, blank=True, choices=TYPE_CHOICES)
+    
 
     def __str__(self):
         return self.name
@@ -39,6 +20,26 @@ class Product(models.Model):
     name = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=19, decimal_places=10, null=False)
     image = models.ImageField(null=True, blank=True)
+    description = models.CharField(max_length=200, null=True,blank=True)
+    CATEGORY_CHOICES = [
+        ('Mens', 'Mens'),
+        ('Womens', 'Womens'),
+        ('Kids', 'Kids'),
+    ]
+    SIZE_CHOICES = [
+        ('S', 'Small'),
+        ('Xl', 'Xtra Large'),
+        ('M', 'Medium'),
+        ('XXL', 'Xtra Xtra Large'),
+    ]
+    TYPE_CHOICES = [
+        ('Jersey', 'Jersey'),
+        ('Boots', 'Boots'),
+        ('Accessories', 'Accessories'),
+    ]
+    category = models.CharField(max_length=50, null=True, blank=True, choices=CATEGORY_CHOICES)
+    size = models.CharField(max_length=50, null=True, blank=True, choices=SIZE_CHOICES)
+    type = models.CharField(max_length=50, null=True, blank=True, choices=TYPE_CHOICES)
     
     
     

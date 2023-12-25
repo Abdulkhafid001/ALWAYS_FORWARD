@@ -1,9 +1,13 @@
 /* BLOCK */
+* {
+    box-sizing: border-box;
+}
 
 #footer {
     background-color: #F0F0F0;
 }
-/* code for video styling */
+
+
 
 
 /* ELEMENT */
@@ -11,12 +15,12 @@
     background-color: black;
 }
 
-.flip-image:hover {
+/* .flip-image:hover {
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
     display: none;
     outline: 2px soid red;
-}
+} */
 
 .bg-black-stylish {
     background-color: #17252a;

@@ -33,6 +33,10 @@ def cookieCart(request):
                         'price': product.price,
                         'imageURL': product.imageURL,
                         'get_total': total,
+                        'description': product.description,
+                        'category': product.category,
+                        'size': product.size,
+                        'type': product.type,
                     }, 'quantity': cart[i]['quantity']
                 }
                 items.append(item)

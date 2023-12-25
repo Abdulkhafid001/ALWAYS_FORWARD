@@ -30,7 +30,8 @@
             {% for product in products %}
             <div class="col-sm-4 mb-3">
                 <div class="card">
-                    <img class="card-img-top img-fluid flip-image" src="{{product.imageURL}}" alt="{{product.imageURL}}">
+                    <img class="card-img-top img-fluid flip-image" src="{{product.imageURL}}"
+                        alt="{{product.imageURL}}">
                     <div class="card-body text-start">
                         <h5>{{product.name}}</h5>
                         <h6 class="">&#8358;{{product.price|floatformat:2}}</h6>
@@ -38,7 +39,7 @@
                             <button data-product="{{product.id}}" data-action="add"
                                 class="bg-site-green br-curve border border-success text-white px-sm-5 py-sm-2 add-btn update-cart">Add
                                 to Cart</button>
-                            <a class="btn btn-outline-success br-curve" href="#">View</a>
+                            <a class="btn btn-outline-success br-curve" href="details/{{product.id}}">View</a>
                         </div>
                     </div>
                 </div>

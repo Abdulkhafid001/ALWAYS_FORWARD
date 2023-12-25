@@ -23,6 +23,17 @@ def merch(request):
     return render(request, 'store/products.html', context)
 
 
+# detail view this view get the product of a product and get it's lone data
+def detail_view(request, product_id):
+    data = cartData(request)
+    cartItems = data['cartItems']
+    # get product based on id
+    product = Product.objects.get(id=product_id)
+    print(product.name)
+    context = {'product': product, 'cartItems': cartItems}
+    return render(request, 'store/detail.html', context)
+
+
 def shoes(request):
     data = cartData(request)
     cartItems = data['cartItems']
