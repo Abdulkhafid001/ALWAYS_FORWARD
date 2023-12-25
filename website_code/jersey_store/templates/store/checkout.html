@@ -19,17 +19,20 @@
                         <p>Enter User Info:</p>
                         <div class="row mb-3">
                             <div class="col-sm-12">
-                                <input type="text" class="form-control rounded-0" id="" placeholder="name" required>
+                                <input type="text" class="form-control rounded-0" name="user name" id=""
+                                    placeholder="name" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-sm-12">
-                                <input type="email" class="form-control rounded-0" id="" placeholder="email" required>
+                                <input type="email" class="form-control rounded-0" name="email" id=""
+                                    placeholder="email" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-sm-12">
-                                <input type="text" class="form-control rounded-0" id="" placeholder="phone no" required>
+                                <input type="text" class="form-control rounded-0" name="phone no" id=""
+                                    placeholder="phone no" required>
                             </div>
                         </div>
                     </div>
@@ -38,22 +41,26 @@
                         <p>Enter User Info:</p>
                         <div class="row mb-3">
                             <div class="col-sm-12">
-                                <input type="text" class="form-control rounded-0" id="" placeholder="address" required>
+                                <input type="text" class="form-control rounded-0" name="address" id=""
+                                    placeholder="address" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-sm-12">
-                                <input type="text" class="form-control rounded-0" id="" placeholder="city" required>
+                                <input type="text" class="form-control rounded-0" name="city" id="" placeholder="city"
+                                    required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-sm-12">
-                                <input type="text" class="form-control rounded-0" id="" placeholder="state" required>
+                                <input type="text" class="form-control rounded-0" name="state" id="" placeholder="state"
+                                    required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-sm-12">
-                                <input type="text" class="form-control rounded-0" id="" placeholder="zip code" required>
+                                <input type="text" class="form-control rounded-0" name="zip code" id=""
+                                    placeholder="zip code" required>
                             </div>
                         </div>
                     </div>
@@ -64,9 +71,13 @@
                             value="Submit">
                     </div>
                 </form>
-                <div class="box-element m-2 p-3" id="payment-info">
+                <div class="box-element text-center m-2 p-3">
                     <p class="fs-anton text-center">We Accept Paystack Options</p>
-                    <button type="submit" onclick="payWithPaystack()"> Pay </button>
+                    <div class="w-100 h-75 d-none">
+                        <img class="img-fluid" src="{% static 'images/paystack-logo.jfif'%}" alt="">
+                    </div>
+                    <button type="submit" class="" id="payment-button" onclick="payWithPaystack()"> Pay
+                        &#8358;{{order.get_cart_total|floatformat:2}}</button>
                 </div>
             </div>
             <div class="col-sm-4">
@@ -103,7 +114,7 @@
             console.log('Form Submitted...')
             // call the method that sends user data to the database
             submitFormData();
-        })
+        });
 
         /*
         document.getElementById('make-payment').addEventListener('click', function (e) {
@@ -128,18 +139,16 @@
                 'zipcode': null,
             }
 
-            // user shipping info data
-            shippingInfo.address = form.address.value
-            shippingInfo.city = form.city.value
-            shippingInfo.state = form.state.value
-            shippingInfo.zipcode = form.zipcode.value
-
             // user name and contact details
             userFormData.name = form.name.value
             userFormData.email = form.email.value
             userFormData.phone = form.phone.value
 
-
+            // user shipping info data
+            shippingInfo.address = form.address.value
+            shippingInfo.city = form.city.value
+            shippingInfo.state = form.state.value
+            shippingInfo.zipcode = form.zipcode.value
             console.log('Shipping Info:', shippingInfo)
             console.log('User Info:', userFormData)
 
