@@ -11,55 +11,63 @@
 
 <body>
     {% block content %}
-    <div class="container-fluid mt-2">
+    <div class="container-fluid mt-4 fs-anton">
         <div class="row">
-            <div class="col-sm-6 box-element">
-                <form id="form" class="fs-anton">
-                    <hr>
-                    <div id="user-info">
-                        <p>User Info:</p>
-                        <div class="form-field">
-                            <input required class="form-control" type="text" name="name" placeholder="Name..">
+            <div class="col-sm-6">
+                <form id="form" action="">
+                    <div class="user-info">
+                        <p>Enter User Info:</p>
+                        <div class="row mb-3">
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control rounded-0" id="" placeholder="name" required>
+                            </div>
                         </div>
-                        <div class="form-field">
-                            <input required class="form-control" type="email" name="email" placeholder="Email..">
+                        <div class="row mb-3">
+                            <div class="col-sm-12">
+                                <input type="email" class="form-control rounded-0" id="" placeholder="email" required>
+                            </div>
                         </div>
-                        <div class="form-field">
-                            <input required class="form-control" type="text" name="phone" placeholder="Phone(optional)">
+                        <div class="row mb-3">
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control rounded-0" id="" placeholder="phone no" required>
+                            </div>
                         </div>
                     </div>
 
-                    <div id="shipping-info">
-                        <hr>
-                        <p>Shipping Information:</p>
-                        <i class="fs-anton">please enter specific details</i>
-                        <hr>
-                        <div class="form-field">
-                            <input class="form-control" type="text" name="address" placeholder="Address..">
+                    <div class="shipping-info">
+                        <p>Enter User Info:</p>
+                        <div class="row mb-3">
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control rounded-0" id="" placeholder="address" required>
+                            </div>
                         </div>
-                        <div class="form-field">
-                            <input class="form-control" type="text" name="city" placeholder="City..">
+                        <div class="row mb-3">
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control rounded-0" id="" placeholder="city" required>
+                            </div>
                         </div>
-                        <div class="form-field">
-                            <input class="form-control" type="text" name="state" placeholder="State..">
+                        <div class="row mb-3">
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control rounded-0" id="" placeholder="state" required>
+                            </div>
                         </div>
-                        <div class="form-field">
-                            <input class="form-control" type="text" name="zipcode" placeholder="Zip code..">
+                        <div class="row mb-3">
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control rounded-0" id="" placeholder="zip code" required>
+                            </div>
                         </div>
                     </div>
-                    <input id="form-button"
-                        class="m-2 bg-site-green text-white td-none px-5 py-2 border border-0 fw-bold" type="submit"
-                        value="Submit">
-                    <p class="fs-anton">we will contact you as soon as your order is placed</p>
+                    <i class="fs-anton">we will contact you as soon as your order is placed.</i>
+                    <div class="">
+                        <input id="form-button"
+                            class="m-2 bg-site-green text-white td-none px-5 py-2 border border-0 fw-bold" type="submit"
+                            value="Submit">
+                    </div>
                 </form>
-
                 <div class="box-element m-2 p-3" id="payment-info">
-                    <p class="fs-anton text-center">We Accept Paypal Options</p>
-                    <!-- <button id="make-payment">Make payment</button> -->
-                    <div id="paypal-button-container"></div>
+                    <p class="fs-anton text-center">We Accept Paystack Options</p>
                 </div>
             </div>
-
             <div class="col-sm-4">
                 <h3 class="fs-anton">Your Order</h3>
                 {% for item in items %}
@@ -71,7 +79,7 @@
                                 <p class="fs-anton fw-bold">{{item.product.name}}</p>
                                 <p class="fs-anton">&#8358;{{item.product.price|floatformat:2}}</p>
                                 <p class="quantity fs-roboto ">x{{item.quantity}}</p>
-                                <p class="fs-roboto fw-bold">&#8358;{{item.get_total|floatformat:2}}</p>
+                                <p class="fs-roboto fw-bold">&#8358;{{item.product.get_total|floatformat:2}}</p>
                             </div>
                         </div>
                     </div>
@@ -81,43 +89,10 @@
         </div>
     </div>
 
-    <script
-        src="https://www.paypal.com/sdk/js?client-id=Aaft7QNk7Qt2Js9ylqCjYB_dP3fnWj_uAwvvjPXuV_nRn8JJIcZDoArjqok1XzkCs9Kkc-z7E2UNOtLJ&currency=USD&disable-funding=credit&debug=true&integration-date=2023-12-18&intent=authorize&vault=true"></script>
-    <!-- script for rendering paypal buttons -->
     <script type="text/javascript">
-        var total = '{{order.get_cart_total}}'
-        // Render the PayPal button into #paypal-button-container
-        paypal.Buttons({
-
-            style: {
-                color: 'gold',
-                shape: 'rect',
-            },
-
-            // Set up the transaction
-            createOrder: function (data, actions) {
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: parseFloat(total).toFixed(2)
-                        }
-                    }]
-                });
-            },
-
-            // Finalize the transaction
-            onApprove: function (data, actions) {
-                return actions.order.capture().then(function (details) {
-                    // Show a success message to the buyer
-                    alert("Transaction completed by " + details.payer.name.given_name + '!');
-                    submitFormData()
-                });
-            }
-
-        }).render('#paypal-button-container');
-    </script>
-
-    <script type="text/javascript">
+        // get cart total from backend
+        var total = "{{order.get_cart_total|floatformat:2}}"
+        console.log("user " + total);
         // get the user info form element
         var form = document.getElementById('form');
         form.addEventListener('submit', function (e) {

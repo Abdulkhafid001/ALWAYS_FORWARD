@@ -6,7 +6,6 @@ def cookieCart(request):
     # Create empty cart for now for non-logged in user
     try:
         cart = json.loads(request.COOKIES['cart'])
-        print(cart, ' is coming to backend')
     except:
         cart = {}
         print('CART:', cart)
@@ -20,7 +19,6 @@ def cookieCart(request):
             if (cart[i]['quantity'] > 0):  # items with negative quantity = lot of freebies
                 cartItems += cart[i]['quantity']
                 # get all products from databse
-                print(i, ' is what i is oooooooooooooooooooooooooooooo')
                 product = Product.objects.get(id=i)
                 # get the total
                 total = (product.price * cart[i]['quantity'])
@@ -34,6 +32,7 @@ def cookieCart(request):
                         'name': product.name,
                         'price': product.price,
                         'imageURL': product.imageURL,
+                        'get_total': total,
                     }, 'quantity': cart[i]['quantity']
                 }
                 items.append(item)

@@ -63,29 +63,3 @@ function addCookieItem(productId, action) {
 }
 
 // customization functionality
-function customize() {
-    // Get the elements
-    var jerseyContainer = document.getElementById("jerseyContainer");
-    var jerseyImage = document.getElementById("jerseyImage");
-    var jerseyNameElement = document.getElementById("jerseyName");
-    var jerseyNumberElement = document.getElementById("jerseyNumber");
-
-    // Set player name and number
-    var playerName = "Abdul";
-    var playerNumber = "62";
-
-    jerseyNameElement.innerText = playerName;
-    jerseyNumberElement.innerText = playerNumber;
-
-    // Calculate image width and height
-    var imageWidth = jerseyImage.width;
-    var imageHeight = jerseyImage.height;
-
-    // Set jersey details position based on image dimensions
-    // jerseyContainer.style.width = imageWidth + "px";
-    // jerseyContainer.style.height = imageHeight + "px";
-    // jerseyContainer.style.marginLeft = "-" + imageWidth / 2 + "px";
-    // jerseyContainer.style.marginTop = "-" + imageHeight / 2 + "px";
-}
-customize();
-const carousel = new bootstrap.Carousel('#myCarousel');
