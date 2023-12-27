@@ -65,20 +65,21 @@
                         </div>
                     </div>
                     <i class="fs-anton">we will contact you as soon as your order is placed.</i>
-                    <div class="">
+                    <!-- <div class="">
                         <input id="form-button"
                             class="m-2 bg-site-green text-white td-none px-5 py-2 border border-0 fw-bold" type="submit"
                             value="Submit">
+                    </div> -->
+                    <div class="box-element text-center m-2 p-3">
+                        <p class="fs-anton text-center">We Accept Paystack Options</p>
+                        <div class="w-100 h-75 d-none">
+                            <img class="img-fluid" src="{% static 'images/paystack-logo.jfif'%}" alt="">
+                        </div>
+                        <input type="submit" class="bg-site-green text-white td-none px-5 py-2 border border-0 fw-bold"
+                            value="Submit & Pay &#8358;{{order.get_cart_total|floatformat:2}}">
                     </div>
                 </form>
-                <div class="box-element text-center m-2 p-3">
-                    <p class="fs-anton text-center">We Accept Paystack Options</p>
-                    <div class="w-100 h-75 d-none">
-                        <img class="img-fluid" src="{% static 'images/paystack-logo.jfif'%}" alt="">
-                    </div>
-                    <button type="submit" class="" id="payment-button" onclick="payWithPaystack()"> Pay
-                        &#8358;{{order.get_cart_total|floatformat:2}}</button>
-                </div>
+
             </div>
             <div class="col-sm-4">
                 <h3 class="fs-anton">Your Order</h3>
@@ -112,15 +113,16 @@
             // prevent the form from submitting
             e.preventDefault()
             console.log('Form Submitted...')
+            sendUserDataAndHandlePayment();
+        });
+        // created a combined function that handles send user data to backend and paystack payments
+        function sendUserDataAndHandlePayment() {
             // call the method that sends user data to the database
             submitFormData();
-        });
+            // call payment handling method
+            payWithPaystack();
 
-        /*
-        document.getElementById('make-payment').addEventListener('click', function (e) {
-            submitFormData()
-        })*/
-
+        }
 
         function submitFormData() {
             console.log('Payment button clicked')
@@ -167,15 +169,35 @@
                 .then((data) => {
                     console.log('Success:', data);
                     alert('Transaction completed');
-
                     // create cart and send to cookies
                     cart = {};
                     document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/";
+                })
+        }
 
+        function payWithPaystack() {
+            let handler = PaystackPop.setup({
+                key: 'pk_test_b492677a96dd7e3629106d328f073cbb0fd80924', // Replace with your public key
+                email: form.email.value,
+                amount: total * 100,
+                ref: '' + Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+                currency: 'NGN',
+                onClose: function () {
+                    alert('Window closed.');
+                },
+                callback: function (response) {
+                    let message = 'Payment complete! Reference: ' + response.reference; + ' call us now: to start working on delivery. +234 907 327 9891'
+                    alert(message);
                     // reload page
                     window.location.href = "{% url 'store' %}";
+                }
 
-                })
+            });
+            // send confirmation to backend
+
+
+            handler.openIframe();
+
         }
     </script>
     {% endblock content %}

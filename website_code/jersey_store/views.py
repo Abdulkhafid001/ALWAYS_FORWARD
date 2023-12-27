@@ -4,7 +4,8 @@ import json
 import datetime
 from .models import *
 from .utils import cartData, guestOrder
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMessage
+from website_code.settings import EMAIL_HOST_USER
 
 
 def store(request):
@@ -157,12 +158,12 @@ def update_item(request):
 def process_order(request):
     transaction_id = datetime.datetime.now().timestamp()
     data = json.loads(request.body.decode('utf-8'))
-    name = data['userInfo']['name']
-    email = data['userInfo']['email']
-    phone = data['userInfo']['phone']
+    user_name = data['userInfo']['name']
+    user_email = data['userInfo']['email']
+    user_phone = data['userInfo']['phone']
 
-    print('name: ', name)
-    print('email: ', email)
+    print('name: ', user_name)
+    print('email: ', user_email)
     print(data['shippingInfo']['address'])
     print(data['shippingInfo']['zipcode'])
     print(data['shippingInfo']['city'])
@@ -195,18 +196,16 @@ def process_order(request):
     )
     shipping.save()
     # Send email to the user
-    # send_order_confirmation_email(customer, order, shipping)
+    # send_order_confirmation_email(data, order, shipping)
     return JsonResponse({'message':'Payment submitted..'}, safe=False)
 
 # function to send email after an order an order is completed
-
-
-def send_order_confirmation_email(customer, order, shipping):
+def send_order_confirmation_email(data, order, shipping):
     subject = 'Order Confirmation'
-    message = f'Thank you for your order! Your order with transaction ID {order.transaction_id} has been received.\n\nShipping Details:\nName: {customer.name}\nEmail: {customer.email}\nAddress: {shipping.address}\nCity: {shipping.city}\nState: {shipping.state}\nZip Code: {shipping.zipcode}\n\nTotal Amount: {order.get_cart_total}'
+    message = f'Thank you {data['userInfo']['name']} for your order! Your order with transaction ID {order.transaction_id} has been received.\n\nShipping Details:\nName: {data['userInfo']['name']}\nEmail: {data['userInfo']['email']}\nAddress: {shipping.address}\nCity: {shipping.city}\nState: {shipping.state}\nZip Code: {shipping.zipcode}\n\nTotal Amount: {order.get_cart_total}\n\nCall us at: 09168424529'
 
-    from_email = 'kabiruabdulkhafid@gmail.com'
-    recipient_list = [customer.email]
+    from_email = EMAIL_HOST_USER
+    recipient_list = [data['userInfo']['email']]
 
     send_mail(subject, message, from_email,
               recipient_list, fail_silently=False)
