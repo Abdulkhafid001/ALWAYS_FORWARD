@@ -30,17 +30,8 @@ def detail_view(request, product_id):
     cartItems = data['cartItems']
     # get product based on id
     product = Product.objects.get(id=product_id)
-    print(product.name)
     context = {'product': product, 'cartItems': cartItems}
     return render(request, 'store/detail.html', context)
-
-
-def shoes(request):
-    data = cartData(request)
-    cartItems = data['cartItems']
-    products = Product.objects.all()
-    context = {'products': products, 'cartItems': cartItems}
-    return render(request, 'store/products.html', context)
 
 
 def cart(request):
@@ -63,6 +54,43 @@ def checkout(request):
 
     context = {'items': items, 'order': order, 'cartItems': cartItems}
     return render(request, 'store/checkout.html', context)
+
+# brand_view functionality takes a category and display all the product under that category
+
+
+def brand_view(request, brand_name):
+    data = cartData(request)
+    cartItems = data['cartItems']
+    # Filter products based on the category
+    product = Product.objects.filter(brand=brand_name)
+    context = {'products': product, 'cartItems': cartItems,
+               'category_name': brand_name}
+    return render(request, 'store/category_products.html', context)
+
+
+# category_view functionality takes a category and display all the product under that category
+
+
+def category_view(request, category_name):
+    data = cartData(request)
+    cartItems = data['cartItems']
+    # Filter products based on the category
+    product = Product.objects.filter(category=category_name)
+    context = {'products': product, 'cartItems': cartItems,
+               'category_name': category_name}
+    return render(request, 'store/products.html', context)
+# type_view functionality takes a category and display all the product under that type
+
+
+def type_view(request, type_name):
+    data = cartData(request)
+    cartItems = data['cartItems']
+    # Filter products based on the category
+    product = Product.objects.filter(type=type_name)
+    context = {'products': product, 'cartItems': cartItems,
+               'category_name': type_name}
+    return render(request, 'store/products.html', context)
+
 
 # customize view
 
@@ -197,12 +225,15 @@ def process_order(request):
     shipping.save()
     # Send email to the user
     # send_order_confirmation_email(data, order, shipping)
-    return JsonResponse({'message':'Payment submitted..'}, safe=False)
+    return JsonResponse({'message': 'Payment submitted..'}, safe=False)
 
 # function to send email after an order an order is completed
+
+
 def send_order_confirmation_email(data, order, shipping):
     subject = 'Order Confirmation'
-    message = f'Thank you {data['userInfo']['name']} for your order! Your order with transaction ID {order.transaction_id} has been received.\n\nShipping Details:\nName: {data['userInfo']['name']}\nEmail: {data['userInfo']['email']}\nAddress: {shipping.address}\nCity: {shipping.city}\nState: {shipping.state}\nZip Code: {shipping.zipcode}\n\nTotal Amount: {order.get_cart_total}\n\nCall us at: 09168424529'
+    message = f'Thank you {data['userInfo']['name']} for your order! Your order with transaction ID {order.transaction_id} has been received.\n\nShipping Details:\nName: {data['userInfo']['name']}\nEmail: {
+        data['userInfo']['email']}\nAddress: {shipping.address}\nCity: {shipping.city}\nState: {shipping.state}\nZip Code: {shipping.zipcode}\n\nTotal Amount: {order.get_cart_total}\n\nCall us at: 09168424529'
 
     from_email = EMAIL_HOST_USER
     recipient_list = [data['userInfo']['email']]

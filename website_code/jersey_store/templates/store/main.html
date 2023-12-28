@@ -77,20 +77,18 @@
 <body>
     <!-- navbar section starts -->
     <section id="navbar">
-        <!-- main nav -->
-        <nav class="navbar navbar-expand-lg bg-body-tertiary  fs-anton">
-            <div class="container-fluid px-md-5">
-                <a class="navbar-brand fs-4 text-uppercase" href="{% url 'store' %}"><span
-                        class="text-danger text-uppercase">Always</span>ForwardStore.com</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
-                    aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary p-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'store' %}">ALWAYSFORWARD</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarScroll">
-                    <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll ms-md-5"
-                        style="--bs-scroll-height: 100px;">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{% url 'customize' %}">Customize</a>
+                            <a class="nav-link active" aria-current="page" href="#">Customize</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -98,13 +96,14 @@
                                 Mens
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Jerseys</a></li>
-                                <li><a class="dropdown-item" href="#">Clothing</a></li>
-                                <li><a class="dropdown-item" href="#">Accessories</a></li>
+                                <li><a class="dropdown-item" href="{% url 'type_view' 'Jersey' %}">Jerseys</a></li>
+                                <li><a class="dropdown-item" href="{% url 'type_view' 'Boot' %}">Boots</a></li>
+                                <li><a class="dropdown-item" href="{% url 'type_view' 'Accessories' %}">Accessories</a>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'products' %}">Women</a>
+                            <a class="nav-link" href="{% url 'category_view' 'Womens' %}">Womens</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -112,29 +111,30 @@
                                 Brands
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Nike</a></li>
-                                <li><a class="dropdown-item" href="#">Adidas</a></li>
-                                <li><a class="dropdown-item" href="#">Champion</a></li>
-                                <li><a class="dropdown-item" href="#">New Balance</a></li>
-                                <li><a class="dropdown-item" href="#">Tommy Hilfiger</a></li>
-                                <li><a class="dropdown-item" href="#">Puma</a></li>
-                                <li><a class="dropdown-item" href="#">Reebok</a></li>
-                                <li><a class="dropdown-item" href="#">Adidas</a></li>
+                                <li><a class="dropdown-item" href="{% url 'brand_view' 'Nike' %}">Nike</a></li>
+                                <li><a class="dropdown-item" href="{% url 'brand_view' 'Adidas' %}">Adidas</a></li>
+                                <li><a class="dropdown-item" href="{% url 'brand_view' 'Champion' %}">Champion</a>
+                                </li>
+                                <li><a class="dropdown-item" href="{% url 'brand_view' 'New Balance' %}">New
+                                        Balance</a></li>
+                                <li><a class="dropdown-item" href="{% url 'brand_view' 'Tommy Hilfiger' %}">Tommy
+                                        Hilfiger</a></li>
+                                <li><a class="dropdown-item" href="{% url 'brand_view' 'Puma' %}">Puma</a></li>
+                                <li><a class="dropdown-item" href="{% url 'brand_view' 'Reebok' %}">Reebok</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{% url 'customize' %}">Teams</a>
+                            <a class="nav-link active" aria-current="page" href="{% url 'products' %}">Teams</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{% url 'products' %}">Hot Sales</a>
                         </li>
                     </ul>
                     <div class="d-flex">
-                        <i class="bi bi-search fs-3 mx-md-3"></i>
-                        <div class="d-flex">
-                            <i class="bi bi-bag-plus fs-3 mx-md-3"></i>
-                            <a href="{% url 'cart' %}" class="fs-3 text-black" id="cart-id">{{cartItems}}</a>
-                        </div>
+                        <li class="nav-item mx-2">
+                            <a class="nav-link text-dark h5" href="{% url 'cart' %}" target="blank"><i
+                                    class="bi bi-bag-plus">{{cartItems}}</i></a>
+                        </li>
                     </div>
                 </div>
             </div>
@@ -331,7 +331,7 @@
                 <!-- Grid row -->
             </div>
             <!-- Copyright -->
-            <div class="text-center p-4 fs-anton" style="background-color: rgba(0, 0, 0, 0.05);">
+            <div class="container-fluid text-center p-4 fs-anton" style="background-color: rgba(0, 0, 0, 0.05);">
                 © 2021 Copyright: <span>ALWAYSFORWARD</span>
                 <div></div>
                 <a href="/admin" class="text-dark fs-anton">go to admin</a>

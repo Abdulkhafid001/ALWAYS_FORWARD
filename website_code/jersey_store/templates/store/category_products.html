@@ -1,0 +1,46 @@
+{% extends 'store/main.html' %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {{brand_name}} Category Products {% endblock %}</title>
+</head>
+
+<body>
+    {% block content %}
+    <!-- category section starts -->
+    <section id="">
+        <div class="container fs-anton mt-5 mb-5">
+            <h3 class="text-center display-6">New Arrivals in {{brand_name}}</h3>
+            <p class="text-center">{{message}}</p>
+            <div class="row">
+                {% for product in products %}
+                <div class="col-sm-4 mb-3">
+                    <div class="card">
+                        <img class="card-img-top img-fluid flip-image" src="{{product.imageURL}}"
+                            alt="{{product.imageURL}}">
+                        <div class="card-body text-start">
+                            <h5>{{product.name}}</h5>
+                            <h6 class="">&#8358;{{product.price|floatformat:2}}</h6>
+                            <div class="d-flex justify-content-around align-items-baseline">
+                                <button data-product="{{product.id}}" data-action="add"
+                                    class="bg-site-green br-curve border border-success text-white px-sm-5 py-sm-2 add-btn update-cart">Add
+                                    to Cart</button>
+                                <a class="btn btn-outline-success br-curve" href="details/{{product.id}}">View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- category section ends -->
+    {% endblock %}
+
+</body>
+
+</html>

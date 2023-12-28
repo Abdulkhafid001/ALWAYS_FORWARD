@@ -9,6 +9,15 @@ urlpatterns = [
     path('checkout/', views.checkout, name="checkout"),
     # url pattern for detail view
     path('details/<int:product_id>', views.detail_view, name="details"),
+    # url pattern for category view
+    path('brand/<str:brand_name>/',
+         views.brand_view, name='brand_view'),
+    # url pattern for product category view
+    path('category/<str:category_name>/',
+         views.category_view, name='category_view'),
+    # url pattern for product type view
+    path('type/<str:type_name>/',
+         views.type_view, name='type_view'),
     path('customize/', views.customize, name="customize"),
     path('products/', views.merch, name="products"),
     path('contact/', views.contact, name="contact"),

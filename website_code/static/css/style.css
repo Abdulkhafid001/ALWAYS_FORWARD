@@ -12,12 +12,25 @@
     background-color: black;
 }
 
-/* .flip-image:hover {
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
+/* #navbar {
+    display: block;
+}
+
+#mobileNav {
     display: none;
-    outline: 2px soid red;
 } */
+
+/* Media query for screens 480 pixels or less */
+/* @media screen and (max-width: 480px) {
+    #navbar {
+        display: none;
+    }
+
+    #mobileNav {
+        display: block;
+    }
+} */
+
 
 .bg-black-stylish {
     background-color: #17252a;
@@ -152,12 +165,7 @@
     font-size: 14px;
 }
 
-.col-lg-4,
-.col-lg-6,
-.col-lg-8,
-.col-lg-12 {
-    margin-top: 10px;
-}
+
 
 .btn {
     border-radius: 0;

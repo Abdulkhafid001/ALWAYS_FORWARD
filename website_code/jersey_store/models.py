@@ -10,7 +10,6 @@ class Customer(models.Model):
         User, null=True, blank=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=200, null=True)
     email = models.CharField(max_length=200, null=True, blank=True)
-    
 
     def __str__(self):
         return self.name
@@ -20,7 +19,7 @@ class Product(models.Model):
     name = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=19, decimal_places=10, null=False)
     image = models.ImageField(null=True, blank=True)
-    description = models.CharField(max_length=200, null=True,blank=True)
+    description = models.CharField(max_length=200, null=True, blank=True)
     CATEGORY_CHOICES = [
         ('Mens', 'Mens'),
         ('Womens', 'Womens'),
@@ -34,15 +33,27 @@ class Product(models.Model):
     ]
     TYPE_CHOICES = [
         ('Jersey', 'Jersey'),
-        ('Boots', 'Boots'),
+        ('Boot', 'Boots'),
         ('Accessories', 'Accessories'),
     ]
-    category = models.CharField(max_length=50, null=True, blank=True, choices=CATEGORY_CHOICES)
-    size = models.CharField(max_length=50, null=True, blank=True, choices=SIZE_CHOICES)
-    type = models.CharField(max_length=50, null=True, blank=True, choices=TYPE_CHOICES)
-    
-    
-    
+    BRAND_CHOICES = [
+        ('Nike', 'Nike'),
+        ('Adidas', 'Adidas'),
+        ('Champion', 'Champion'),
+        ('New Balance', 'New Balance'),
+        ('Tommy Hilfiger', 'Tommy Hilfiger'),
+        ('Puma', 'Puma'),
+        ('Reebok', 'Reebok'),
+    ]
+    category = models.CharField(
+        max_length=50, null=True, blank=True, choices=CATEGORY_CHOICES)
+    size = models.CharField(max_length=50, null=True,
+                            blank=True, choices=SIZE_CHOICES)
+    type = models.CharField(max_length=50, null=True,
+                            blank=True, choices=TYPE_CHOICES)
+    brand = models.CharField(max_length=50, null=True,
+                             blank=True, choices=BRAND_CHOICES)
+
     def __str__(self):
         return self.name
 
@@ -61,7 +72,6 @@ class Order(models.Model):
     date_ordered = models.DateTimeField(auto_now_add=True)
     complete = models.BooleanField(default=False)
     transaction_id = models.CharField(max_length=100, null=True)
-    
 
     def __str__(self):
         return str(self.id)
