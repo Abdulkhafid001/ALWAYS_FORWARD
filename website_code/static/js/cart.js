@@ -1,5 +1,4 @@
 var updateBtns = document.getElementsByClassName('update-cart')
-
 for (i = 0; i < updateBtns.length; i++) {
     updateBtns[i].addEventListener('click', function () {
         var productId = this.dataset.product
@@ -65,3 +64,5 @@ function addCookieItem(productId, action) {
 }
 
 // customization functionality
+// call bootstrap carousel
+const carousel = new bootstrap.Carousel('#myCarousel');

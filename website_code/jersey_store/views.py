@@ -36,11 +36,9 @@ def detail_view(request, product_id):
 
 def cart(request):
     data = cartData(request)
-
     cartItems = data['cartItems']
     order = data['order']
     items = data['items']
-
     context = {'items': items, 'order': order, 'cartItems': cartItems}
     return render(request, 'store/cart.html', context)
 
@@ -232,8 +230,7 @@ def process_order(request):
 
 def send_order_confirmation_email(data, order, shipping):
     subject = 'Order Confirmation'
-    message = f'Thank you {data['userInfo']['name']} for your order! Your order with transaction ID {order.transaction_id} has been received.\n\nShipping Details:\nName: {data['userInfo']['name']}\nEmail: {
-        data['userInfo']['email']}\nAddress: {shipping.address}\nCity: {shipping.city}\nState: {shipping.state}\nZip Code: {shipping.zipcode}\n\nTotal Amount: {order.get_cart_total}\n\nCall us at: 09168424529'
+    message = f"Thank you"
 
     from_email = EMAIL_HOST_USER
     recipient_list = [data['userInfo']['email']]

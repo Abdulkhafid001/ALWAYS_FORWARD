@@ -12,26 +12,6 @@
     background-color: black;
 }
 
-/* #navbar {
-    display: block;
-}
-
-#mobileNav {
-    display: none;
-} */
-
-/* Media query for screens 480 pixels or less */
-/* @media screen and (max-width: 480px) {
-    #navbar {
-        display: none;
-    }
-
-    #mobileNav {
-        display: block;
-    }
-} */
-
-
 .bg-black-stylish {
     background-color: #17252a;
 }
@@ -81,6 +61,10 @@
 .card-no-border {
     border: none;
     display: none;
+}
+
+.lst-none {
+    list-style-type: none;
 }
 
 /* MODIFIER */
