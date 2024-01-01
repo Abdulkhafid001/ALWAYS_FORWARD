@@ -69,7 +69,6 @@
             document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
         }
         console.log('Cart:', cart)
-
     </script>
 
 </head>
@@ -176,7 +175,8 @@
                             placeholder="email">
                     </div>
                     <div>
-                        <button class="bg-site-green fs-anton text-white border border-black py-2 px-5"
+                        <button id="subscribeBtn" onclick="alert('thank you for subscribing to our newsletter!')"
+                            class="bg-site-green fs-anton text-white border border-black py-2 px-5"
                             type="submit">subscribe
                             to our newsletter</button>
                     </div>

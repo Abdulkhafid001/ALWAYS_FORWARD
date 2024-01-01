@@ -139,4 +139,4 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'kabiruabdulkhafid@gmail.com'
-EMAIL_HOST_PASSWORD = 'uxta onps lakx qedl'
+EMAIL_HOST_PASSWORD = 'qahw teyg dird neus'

@@ -66,3 +66,4 @@ function addCookieItem(productId, action) {
 // customization functionality
 // call bootstrap carousel
 const carousel = new bootstrap.Carousel('#myCarousel');
+// functionality for subscribe to our newsletter

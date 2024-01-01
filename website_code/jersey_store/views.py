@@ -2,10 +2,13 @@ from django.shortcuts import render
 from django.http import JsonResponse
 import json
 import datetime
-from .models import *
-from .utils import cartData, guestOrder
-from django.core.mail import send_mail, EmailMessage
-from website_code.settings import EMAIL_HOST_USER
+from jersey_store.models import *
+from jersey_store.utils import cartData, guestOrder
+from django.core.mail import send_mail
+import ssl
+import smtplib
+from email.message import EmailMessage
+from website_code.settings import EMAIL_HOST_USER, EMAIL_HOST_PASSWORD
 
 
 def store(request):
@@ -184,6 +187,8 @@ def update_item(request):
 def process_order(request):
     transaction_id = datetime.datetime.now().timestamp()
     data = json.loads(request.body.decode('utf-8'))
+    data2 = cartData(request)
+
     user_name = data['userInfo']['name']
     user_email = data['userInfo']['email']
     user_phone = data['userInfo']['phone']
@@ -222,18 +227,31 @@ def process_order(request):
     )
     shipping.save()
     # Send email to the user
-    # send_order_confirmation_email(data, order, shipping)
+    send_order_confirmation_email(data, order, data2['items'])
     return JsonResponse({'message': 'Payment submitted..'}, safe=False)
 
 # function to send email after an order an order is completed
 
 
-def send_order_confirmation_email(data, order, shipping):
+def send_order_confirmation_email(data, order, items):
     subject = 'Order Confirmation'
     message = f"Thank you"
-
+    body = f"Dear {data['userInfo']['name']}, we have received your order with transaction id: {order.transaction_id}. The items you ordered are:\n"
+    for item in items:
+        body += f"- {item.product.name} x{item.quantity}, Total: &#8358;{item.get_total}\n"
+    body += f"We will ship to this address: {data['shippingInfo']['address']}, {data['shippingInfo']['city']}, {data['shippingInfo']['state']}, {data['shippingInfo']['zipcode']}. Call us at: +24 8099991032"
     from_email = EMAIL_HOST_USER
-    recipient_list = [data['userInfo']['email']]
+    customer_mail = [data['userInfo']['email']]
 
-    send_mail(subject, message, from_email,
-              recipient_list, fail_silently=False)
+    # instantiate email message
+    em = EmailMessage()
+    em['From'] = from_email
+    em['To'] = customer_mail
+    em['Subject'] = subject
+    em.set_content(body)
+
+    context = ssl.create_default_context()
+
+    with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
+        smtp.login('kabiruabdulkhafid@gmail.com', EMAIL_HOST_PASSWORD)
+        smtp.sendmail(EMAIL_HOST_USER, customer_mail, em.as_string())

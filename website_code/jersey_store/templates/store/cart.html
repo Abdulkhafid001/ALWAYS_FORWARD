@@ -14,7 +14,9 @@
     <div class="container">
         <div class="d-flex justify-content-between align-items-baseline my-2">
             <h3 class="text-uppercase fs-anton">your cart</h3>
-            <a href="{% url 'products' %}" class="bg-site-green text-white fs-anton td-none px-5 py-2 fw-bold">Shop more
+            <a href="{% url 'products' %}"
+                class="border border-success text-black fs-anton td-none px-5 py-2 fw-bold"><i
+                    class="bi bi-arrow-left"></i> Shop more
                 products</a>
         </div>
         <div class="row">
@@ -50,7 +52,7 @@
                         <table class="table table-borderless  mb-5">
                             <tbody>
                                 <tr>
-                                    <td class="text-start">Delivery Fee</td>
+                                    <td class="text-start">Total:</td>
                                     <td class="text-end" id="">&#8358; {{order.get_cart_total|floatformat:2}}</td>
                                 </tr>
                             </tbody>
