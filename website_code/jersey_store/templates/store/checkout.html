@@ -168,7 +168,7 @@
                 .then((response) => response.json())
                 .then((data) => {
                     console.log('Success:', data);
-                    alert('Transaction completed');
+                    // alert('Transaction completed');
                     // create cart and send to cookies
                     cart = {};
                     document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/";
