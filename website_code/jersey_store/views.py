@@ -238,7 +238,7 @@ def send_order_confirmation_email(data, order, items):
     message = f"Thank you"
     body = f"Dear {data['userInfo']['name']}, we have received your order with transaction id: {order.transaction_id}. The items you ordered are:\n"
     for item in items:
-        body += f"- {item.product.name} x{item.quantity}, Total: &#8358;{item.get_total}\n"
+        body += f"- {item.product.name} x{item.quantity}, Total:{item.get_total}\n"
     body += f"We will ship to this address: {data['shippingInfo']['address']}, {data['shippingInfo']['city']}, {data['shippingInfo']['state']}, {data['shippingInfo']['zipcode']}. Call us at: +24 8099991032"
     from_email = EMAIL_HOST_USER
     customer_mail = [data['userInfo']['email']]
