@@ -168,8 +168,7 @@
                 .then((response) => response.json())
                 .then((data) => {
                     console.log('Success:', data);
-                    // alert('Transaction completed');
-                    // create cart and send to cookies
+                    //clear cart and update cookies
                     cart = {};
                     document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/";
                 })
@@ -177,7 +176,7 @@
 
         function payWithPaystack() {
             let handler = PaystackPop.setup({
-                key: 'pk_live_cf9d30adde27366cf7dbd28d8c8e94e4ee282534', // Replace with your public key
+                key: 'pk_live_cf9d30adde27366cf7dbd28d8c8e94e4ee282534',
                 email: form.email.value,
                 amount: total * 100,
                 ref: '' + Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
